@@ -5,39 +5,46 @@ const EntranceTestSchema = new mongoose.Schema(
       type: [String],
       required: true,
       unique: true,
-      validate(value){
-        if(validator.isEmpty(value)){
-            throw new Error("Please enter entrancetest name!");
+      validate(value) {
+        if (validator.isEmpty(value)) {
+          throw new Error("Please enter entrancetest name!");
         }
-      }
+      },
     },
     stream: {
       type: String,
       required: true,
-      validate(value){
-        if(validator.isEmpty(value)){
-            throw new Error("Please enter stream name!");
+      validate(value) {
+        if (validator.isEmpty(value)) {
+          throw new Error("Please enter stream name!");
         }
-      }
+      },
     },
-    college: [{ type: String, required: true, 
-      validate(value){
-      if(validator.isEmpty(value)){
-          throw new Error("Please enter colleges name!");
-      }
-    } }],
-    link: [{
-      type: String,
-      required: true,
-      validate(value){
-        if(!validator.isURL(value)){
+    college: [
+      {
+        type: String,
+        required: true,
+        validate(value) {
+          if (validator.isEmpty(value)) {
+            throw new Error("Please enter colleges name!");
+          }
+        },
+      },
+    ],
+    link: [
+      {
+        type: String,
+        required: true,
+        validate(value) {
+          if (!validator.isURL(value)) {
             throw new Error("Invalid URL!");
-        }
-        if(validator.isEmpty(value)){
+          }
+          if (validator.isEmpty(value)) {
             throw new Error("Please enter valid website url!");
-        }
-    }
-    }],
+          }
+        },
+      },
+    ],
   },
 
   { timestamps: true }
